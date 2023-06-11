@@ -6,12 +6,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x:hidden;
 }
 
 main {
   display: flex;
+  flex-direction: column;
   width:100%;
+  max-width: 1200px;
   justify-content: center;
+
 }
 
 code {
@@ -20,11 +24,11 @@ code {
 }
 
 #root {
-  border:solid  red;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
 }
 
 
@@ -33,16 +37,14 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top:10px;
   width: 100%;
   max-width: 1200px;
-  border:dashed;
-
+  margin-top: 10px;
+  background-color: white;
 }
 
 nav ul {
   display:flex;
-  flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
@@ -66,11 +68,11 @@ nav a {
 }
 
 nav a:hover {
-  color: #F48F14;
+  color: #EE9972;
 }
 
 nav a:active {
-  color: #F48F14;
+  color: #EE9972;
 }
 
 .logo {
@@ -85,21 +87,17 @@ nav a:active {
   width: 100%;
   margin-top: 10px;
   background-color: #495E57;
-  border:dashed;
 }
 
 .hero-container2 {
   display: flex;
-  xflex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
   max-width: 1200px;
   height:400px;
-  border:solid yellow;
   padding-top: 40px;
-  xpadding-left:10px;
-  xpadding-right:10px;
-
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .titles {
@@ -107,29 +105,29 @@ nav a:active {
   flex-direction: column;
   align-items: flex-start;
   max-width: 500px;
-  margin-left: 10px;
-  border:dashed;
+  margin-bottom: 20px;
 }
 
 .title-main {
   font-family: Markazi;
   color: #F4CE14;
-  font-size: 64pt;
+  font-size: 7.5em;
 }
 
 .title-sub {
   font-family: Markazi;
   color: #EDEFEE;
-  font-size: 40pt;
+  font-size: 4.5em;
 }
 
 .hero-description {
   font-family: Karla;
   color: #EDEFEE;
-  font-size: 18pt;
+  font-size: 2em;
   font-weight: bold;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  max-width:400px
 }
 
 @font-face {
@@ -142,36 +140,35 @@ nav a:active {
 }
 
 .hero-image {
-  xdisplay: flex;
   height: 500px;
   max-width: 500px;
   overflow: hidden;
   border-radius: 16px;
   z-index:2;
-  border: dashed;
 }
- .hero-image img{
+.hero-image img{
   width:100%;
   height: auto;
   border-radius: 16px;
   margin-top:-25%;
  }
 
-
 button {
   font-family: Karla;
-  font-size: 20pt;
+  font-size: 2.3em;
   font-weight: bold;
   background-color: #F4CE14;
   border: none;
-  width:220px;
-  height: 60px;
+  padding-top:0.5em;
+  padding-bottom:0.5em;
+  padding-right:0.75em;
+  padding-left:0.75em;
   border-radius: 16px;
-  margin-bottom: 20px;
+  
 }
 
 button:hover {
-  background-color: #F48F14;
+  background-color: #EE9972;
   cursor: pointer;
 }
 
@@ -179,10 +176,11 @@ button:hover {
 .highlights-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
   max-width: 1200px;
-  border: dashed;
+  min-height: 750px;
+  overflow: hidden;
+  border:dashed;
 }
 
 .highlights-header {
@@ -191,27 +189,308 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   margin-top: 150px;
-  width:100%;
-  border: dashed;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .highlights-header div {
-  font-family: Markazi;
-  font-size: 60pt;
+  font-family: Karla;
+  font-size: 4em;
 }
 
 .menucards-container {
+  margin-top: 20px;;
+}
+
+.menucards {
+  font-size: 18px;
+  width:265px;
+  height:460px;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  overflow: hidden;
+  background-color: #EDEFEE;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 2px 4px 4px lightgray;
+}
+
+.menucards-description {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.menucards-name {
+  font-weight: bold;
+  margin-left: 25px;
+  font-family: Markazi;
+  font-size: 14pt;
+}
+
+.menucards-price {
+  color:#EE9972;
+  font-weight: bold;
+  margin-right: 25px;
+  font-family: Karla;
+}
+
+.menucards article {
+  display: flex;
+  padding: 25px;
+  min-height: 110px;
+  text-align: justify;
+  color:#495E57;
+  font-family: Karla;
+}
+
+.menucards-link {
+  font-family: Karla;
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+/* TESTIMONIALS -------------------------------------------*/
+.testimonials-container {
+  border: dashed;
+  min-height: 500px;
+}
+
+.testimonials-container h1 {
+  font-family: Karla;
+  font-size: 4em;
+  font-weight: 400;
+  margin-left: 10px
+}
+
+.tst-cardscontainer {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  border: dashed;
+  font-family: Karla;
+  font-size: 1.4em;
+  text-align: justify;
+
+}
+
+.testimonialcard {
+  align-items: center;
+  height: 15em;
+  width: 12em;
+  border-radius: 16pt;
+  margin-right: 10px;
+  margin-bottom:20px;
+  background-color: #EDEFEE;
+  overflow: hidden;
+  box-shadow: 2px 4px 4px lightgray;
+}
+
+.tst-rating {
+  text-align: right;
+  height: 1.2em;
+  font-size: 1.8em;
+  font-weight: bold;
+  color:#EDEFEE;
+  background-color: #495E57;
+  padding:5px;
+  padding-right: 30px;
+}
+
+.tst-profile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.tst-imagecontainer {
+  display:flex;
+  justify-content: center;
+  width:5em;
+  height:5em;
+  overflow: hidden;
+  border-radius: 50px;
+}
+
+.tst-image {
+  height:140%;
+  width:auto;
+}
+
+.tst-text {
+  padding: 15px;
+  background-color: #EDEFEE;
+}
+
+
+/* ABOUT -------------------------------------------*/
+.about-container {
+  display: flex;
+  justify-content: space-around;
+  min-height: 580px;
+  border: dashed;
+  padding: 10px;
+}
+
+.about-title-main {
+  font-family: Markazi;
+  color: #495E57;
+  font-size: 40pt;
+}
+
+.about-title-sub {
+  font-family: Markazi;
+  color: #EDEFEE;
+  font-size: 24pt;
+  margin-bottom: 20px;;
+}
+
+.about-article {
+  font-family: Karla;
+  flex-direction: column;
+  max-width: 360px;
+}
+.about-article article {
+  font-size: 2em;
+  text-align: justify;
+}
+
+.about-imagecontainer {
+  height: 520px;
+  max-width: 700px;;
+  overflow: hidden;
+  border: dashed;
+}
+
+.about-image1 {
+  width:600px;
+  margin-left: -200px;
+  margin-top: 50px;
+}
+.about-image2 {
+  width: 600px;
+  height: auto;
+  margin-left: 150px;
+  position: relative;
+  top: -350px;
+  z-index: -1;
+}
+
+
+/* FOOTER -------------------------------------------*/
+.footer-container {
   display: flex;
   justify-content: center;
+  width: 100%;
+  max-height: 420px;
+  background-color: #333333;
+  color: #EDEFEE;
+}
+
+.footer-container2 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px 10px 20px 10px;
+  font-family: Karla;
+  font-size: 1.6em;
+
+}
+.footer-container2 p {
+  font-size: 1.2em;
+  color: #EE9972;
+  padding-bottom:5px;
+  margin-top:0;
+}
+
+.footer-navigation {
+  display:flex;
+  flex-direction: column;
+}
+.footer-navigation ul {
+  padding:0;
+  margin:0;
+}
+.footer-navigation li {
+  list-style: none;
+  padding:5px;
+}
+.footer-navigation a {
+  text-decoration: none;
+  color:#EDEFEE;
+}
+.footer-navigation a:hover {
+  color:#F4CE14;
+}
+
+/* BOOKING PAGE -------------------------------------------*/
+.titles-container {
+  display: flex;
+  justify-content: center;
+  height:max-content;
+  width: 100%;
+  margin-top: 10px;
+  padding-bottom: 20px;
+  background-color: #495E57;
+}
+
+.form-container1 {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-bottom: 10px;;
+}
+
+.form-container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height:320px;
+  font-family: Karla;
+  padding-left: 40px;
+  background-color: #EDEFEE;
+  border-radius: 16px;
+  margin:10px;
+}
+
+.bookingform {
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+}
+
+.bookingform label {
+  font-size: 1.8em;
+  margin-bottom: 7px;
+  font-weight: bold;
+  color:#495E57;
+}
+
+.bookingform input, select {
+  font-size: 1.75em;
+  margin-bottom: 20px;
+  height:2.2em;
+  border-radius: 16px;
+  padding-left:0.4em;
+  padding-right:0.4em;
+  border: solid lightgray;
+  min-width: 250px;
+}
+
+.bookingform p {
+  font-size: 2.5em;
+  font-weight: bolder;
 }
 
 /* MEDIA QUERIES -------------------------------------------*/
 
 @media (max-width: 1050px) {
-
-  .titles {
-    max-width: 500px;
-  }
 
   .hero-container2 {
     flex-direction: column;
@@ -221,13 +500,68 @@ button:hover {
   }
 
   .hero-image {
-    margin-left: 10px;
+    margin-bottom: 10px;
     height: auto;
   }
 
   .highlights-header {
     margin-top: 20px;
+    min-height: 400x;
+  }
+  .highlights-container {
+    min-height: 600px;
+  }
+
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-imagecontainer {
+    display:flex;
+    flex-direction: column;
+    height: max-content;
+  }
+
+  .about-article {
+    max-width: 100%;
+  }
+
+  .about-image1 {
+    width:100%;
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  .about-image2 {
+    width: 100%;
+    height: auto;
+    margin-left: 0px;
+    position: relative;
+    top: 10px;
+    z-index: -1;
   }
 
 }
 
+@media (max-width: 600px) {
+  #root {
+    font-size: 8px;
+  }
+
+  .titles {
+    width: 100%;
+  }
+
+  .footer-container2 img {
+    display: none;
+  }
+
+  .tst-cardscontainer {
+    font-size: 1.8em;
+  }
+
+  button {
+    width:100%;
+  }
+
+
+}
