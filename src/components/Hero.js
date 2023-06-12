@@ -1,6 +1,12 @@
 import heroImage from  "../assets/images/restauranfood.jpg"
+import { useNavigate } from "react-router-dom";
+
 
 const Hero = () => {
+
+    const navigate = useNavigate()
+    function handleRedirect () {navigate("/booking")}
+
     return (
         <div class="hero-container">
             <div class="hero-container2">
@@ -11,7 +17,7 @@ const Hero = () => {
                         We are a family owned Mediterranean restaurant,
                         focused on traditional recipes served with a modern twist.
                     </div>
-                    <button>Reserve a Table</button>
+                    <button onClick={handleRedirect}>Reserve a Table</button>
                 </div>
                 <div class="hero-image">
                     <img src={heroImage} alt="heroimage" ></img>
