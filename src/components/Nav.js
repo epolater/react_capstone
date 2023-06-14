@@ -4,22 +4,23 @@ import Logo from '../assets/logos/Logo.svg';
 
 export const NavItems = () => {
   return (
-    <ul>
+    <>
       <li><Link to="/">Home</Link></li>
       <li><a href="#about">About</a></li>
       <li><a href="#menu">Menu</a></li>
       <li><Link to="/booking">Reservations</Link></li>
-      <li><a href="#orderonline">Order Online</a></li>
       <li><a href="#login">Login</a></li>
-    </ul>
-  );
-};
+    </>
+  )
+}
 
 const Nav = () => {
   return (
     <nav className="nav-bar">
       <img src={Logo} alt="Logo" className="logo" />
-      <NavItems />
+      <ul class="topnav" id="myTopnav">
+        <NavItems />
+      </ul>
     </nav>
   );
 };

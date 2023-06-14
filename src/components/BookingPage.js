@@ -32,18 +32,59 @@ const BookingPage = () => {
         const newReservation = {...reservation}
         newReservation[field] = e.target.value
         setReservation(newReservation)
-
+        //console.log(e.target.value)
     }
 
-    // Fetching API and updatin avalibale times for time selection input
+    // Fetching API and updating avalibale times for time selection input
     const updateTimes = (availabletimes, date) => {return fetchAPI(date)}
     const initializeTimes = fetchAPI(new Date())
     const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes)
 
     // Submit Form and redirect to Confirmation Page
     const navigate = useNavigate()
+
+    const [validation, setValidation] = useState(true)
+    let inputs = 0
+    function validate () {
+        Object.keys(reservation).forEach((input) => {
+            if (reservation[input] === "") {inputs+=1}
+        })
+        if (inputs > 0) {setValidation(false)}
+
+    }
+    
+
     function handleSubmit() {
-        if (submitAPI(reservation)) {navigate("/bookingconfirmed")}
+        validate()
+
+        if (inputs === 0) {
+            if (submitAPI(reservation)) {navigate("/bookingconfirmed")}
+        }
+
+    }
+
+    const Warning = (props) => {
+
+        const messages = {
+            date: "Please select a date",
+            time: "Please select an available time",
+            guests: "Please indicate number of guests",
+            occasion: "Please select type of ocassion",
+            first_name: "Please fill in your name",
+            last_name: "Please fill in your last name",
+            phone: "Please fill in your phone number",
+            email: "Please fill in your e-mail adress",
+        }
+
+        let message = ""
+
+        if (reservation[props.id] === "") {message = messages[props.id]}
+
+        //const [message, setMessage] = useState("test")
+
+        if (validation === false) {return <div class="warning" >{message}</div>}
+        else {return null}
+        
     }
 
     // Booking Page elements
@@ -57,13 +98,14 @@ const BookingPage = () => {
                         <p>Booking Details</p>
                         {/* Date Select Field */}
                         <label htmlFor="res-date">Choose date</label>
-                        <input
+                        <input required
                             type="date" id="res-date"
                             value={reservation.date} onChange={(e) => {
                                 updatedReservation(e, 'date')
                                 dispatch(new Date(e.target.value))
                             }}
                         />
+                        <Warning id={"date"}></Warning>
 
                         {/* Time Select Field */}
                         <label htmlFor="res-time">Choose time</label>
@@ -72,13 +114,15 @@ const BookingPage = () => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
+                        <Warning id={"time"}></Warning>
 
                         {/* Number Of Guests Field */}
                         <label htmlFor="guests">Number of guests</label>
-                        <input
-                            type="number" placeholder="1" min="1" max="10" id="guests"
+                        <input required
+                            type="number"  min="1" max="10" id="guests"
                             value={reservation.guests} onChange={(e) => updatedReservation(e, 'guests')}
                         />
+                        <Warning id={"guests"}></Warning>
 
                         {/* Occassion Select Field */}
                         <label htmlFor="occasion">Occasion</label>
@@ -88,41 +132,47 @@ const BookingPage = () => {
                             })}
 
                         </select>
+                        <Warning id={"occasion"}></Warning>
                     </form>
 
                     <form class="bookingform">
                         <p>Contact</p>
 
                         {/* First Name Field */}
-                        <label htmlFor="first-name">First Name</label>
-                        <input
+                        <label htmlFor="first-name">First Name *</label>
+                        <input required
                             type="text" id="first-name"
                             value={reservation.first_name} onChange={(e) => updatedReservation(e, 'first_name')}
                         />
+                        <Warning id={"first_name"}></Warning>
 
                         {/* Last Name Field */}
                         <label htmlFor="last-name">Last Name</label>
                         <input
-                            type="text" id="last-name "
+                            type="text" id="last-name"
                             value={reservation.last_name} onChange={(e) => updatedReservation(e, 'last_name')}
                         />
+                        <Warning id={"last_name"}></Warning>
+
 
                         {/* Phone Number Field */}
                         <label htmlFor="phone">Phone Number</label>
-                        <input
-                            type="number" id="phone"
+                        <input required
+                            type="tel" id="phone"
                             value={reservation.phone} onChange={(e) => updatedReservation(e, 'phone')}
                         />
+                        <Warning id={"phone"}></Warning>
 
                         {/* email Field */}
                         <label htmlFor="email">e-mail</label>
-                        <input
+                        <input required
                             type="email" placeholder="example@mail.com" id="email"
                             value={reservation.email} onChange={(e) => updatedReservation(e, 'email')}
                         />
+                        <Warning id={"email"}></Warning>
                     </form>
                 </div>
-                <button onClick={handleSubmit}>Complete the Reservation</button>
+                <button type="submit" onClick={handleSubmit}>Complete the Reservation</button>
             </div>
         </>
     )
